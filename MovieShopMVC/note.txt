@@ -1,0 +1,73 @@
+﻿MVC
+
+Model : data representation for the view
+
+View : HTML +CSS +JS +Razor
+
+Controller:
+
+HTTP requests:
+
+GET / put/ post/ delete
+
+GET http://movieshop.com/movies/details/2
+
+controller name/action name/id as a parameter
+
+
+
+
+You create entites based on requirement of databsae tables
+you create models based on requireemnt of View
+
+
+HomeController controller = new HomeController(new Logger(), new MovieService());
+controller.Index();
+Method(int x, IMovieService service);
+Method(5, new MovieService() )
+Partial Views are useful so that we can re use them across multiple views
+
+EF Core - 6
+
+Dapper -> micro-ORM - Northwind, Adven
+ORM => Object Relation Mapper
+
+
+
+EF  Core Code First approach
+
+1. Install EF Core tools 
+https://docs.microsoft.com/en-us/ef/core/cli/dotnet
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
+
+2. Install Microsoft.EntityFrameworkCore.SqlServer in Infra and MVC projects
+3. Install Microsoft.EntityFrameworkCore.Design in MVC
+4. Create a class inherits from DbContext => represents your Database
+5. Create a connection string which EF Core is going to use to access the database
+    should include server name, Database Name and any credentials
+6. Read the connection string from appsettings.json and inject into MovieShopDbContext
+7. DbSet represents your database table, create an entity class that represents your table
+8. Migrations - Create Initial Migration dotnet ef migrations add InitialMigration  -p ../Infrastructure/Infrastructure.csproj
+9. Apply the Migration dotnet ef database update
+10. TO make any schema changes, we can use 2 approaches
+    1. Data Annotations => using System.ComponentModel.DataAnnotations;
+    2. Fluent API => much more powerful and has more options
+
+Reguster => email/password
+
+1.public access => home page, movie details page, cast details, login, register
+2.customer access (loged in) => view/edit profile, purchase movie, review/rating, favorite
+3. Admin Access (User loged in and have role of admin)=> create movie, creat cast, get most purchased movie
+
+   Register                     
+    email                   password          Salt
+ u1 abc@abc.com             (Pas##4HKLtt   +  adfafafdafdaf)        Hashing  -Pdbk/Bcrypt => dakhfkjdadhf769as7f90adufadnfn
+ u2 xyz@abc.com             (Pas##4HKLtt   +  hfhhgdhgdfhggds)
+
+
+
+ Login
+ u1 abc@abc.com 
+
+
