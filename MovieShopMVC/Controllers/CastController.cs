@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MovieShopMVC.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CastController : Controller
     {
         private readonly ICastService _castService;
@@ -13,6 +15,7 @@ namespace MovieShopMVC.Controllers
         }
 
         [HttpGet]
+        [Route("{id:int}")]
         public async Task<IActionResult> Details(int id)
         {
             var castDetails = await _castService.GetCastDetails(id);

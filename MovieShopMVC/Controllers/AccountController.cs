@@ -7,6 +7,8 @@ using System.Security.Claims;
 
 namespace MovieShopMVC.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
@@ -15,7 +17,7 @@ namespace MovieShopMVC.Controllers
         {
             _accountService = accountService;
         }
-
+        
         public IActionResult Login()
         {
             return View();
