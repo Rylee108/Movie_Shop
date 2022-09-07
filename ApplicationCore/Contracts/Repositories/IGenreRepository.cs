@@ -11,5 +11,7 @@ namespace ApplicationCore.Contracts.Repositories
     public interface IGenreRepository
     {
         Task<List<Genre>> GetAllGenres();
+        Task<Genre> Add(Genre genre);
+
     }
 }

@@ -12,6 +12,7 @@ namespace MovieShopMVC.Controllers
             _movieService = movieService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> DetailsAsync(int id)
         {
 
@@ -28,7 +29,7 @@ namespace MovieShopMVC.Controllers
             //Onion, clean
         }
 
-        public async Task<ActionResult> GenreMovies(int id, int pageSize = 30, int page = 1)
+        public async Task<ActionResult> MoviesByGenre(int id, int pageSize = 30, int page = 1)
         {
             var pagedMovies = await _movieService.GetMoviesByPagination(id, pageSize, page);
             return View(pagedMovies);

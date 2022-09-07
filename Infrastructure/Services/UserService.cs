@@ -108,6 +108,20 @@ namespace Infrastructure.Services
             return purchaseDetails;
         }
 
+        public async Task<ReviewModel> GetReview(int userId, int movieId)
+        {
+            var review = await _reviewRepository.GetById(userId, movieId);
+            var model = new ReviewModel
+            {
+                MovieId = movieId,
+                UserId = userId,
+                Rating = review.Rating,
+                ReviewText = review.ReviewText
+            };
+
+            return model;
+        }
+
         public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId)
         {
             if (await _purchaseRepository.CheckIfPurchaseExists(userId, purchaseRequest.MovieId))
